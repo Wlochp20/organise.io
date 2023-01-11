@@ -2,6 +2,9 @@ package com.example.backend.connector;
 
 import com.example.backend.board.Board;
 import com.example.backend.user.User;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 
 import javax.persistence.*;
 
@@ -11,10 +14,12 @@ public class Connector {
     private int id;
 
     @ManyToOne
+    @Cascade(CascadeType.SAVE_UPDATE)
     @JoinColumn(name = "user_id")
     User user;
 
     @ManyToOne
+    @Cascade(CascadeType.SAVE_UPDATE)
     @JoinColumn(name = "board_id")
     Board board;
 

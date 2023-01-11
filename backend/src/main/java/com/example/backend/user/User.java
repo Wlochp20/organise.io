@@ -21,7 +21,7 @@ public class User  {
     private String password;
     private Boolean logged = false;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
     Set<Connector> connectors;
 
 
@@ -31,6 +31,7 @@ public class User  {
         this.password = password;
     }
 
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
@@ -38,7 +39,6 @@ public class User  {
 
     public User() {
     }
-
 
 
     public String getPassword() {

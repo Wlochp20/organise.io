@@ -13,8 +13,8 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-    @PostMapping(path = "/addBoard")
-    public ResponseEntity addBoard(@RequestBody Board board){
-        return boardService.addBoard(board);
-    }
+//    @PostMapping(path = "/addBoard")
+//    public ResponseEntity addBoard(@RequestBody Board board){
+//        return boardService.addBoard(board);
+//    }
 }

@@ -16,7 +16,7 @@ public class Board {
     private String title;
     @OneToMany
     Set<TableClass> tableClasses;
-    @OneToMany(mappedBy = "board")
+    @OneToMany(mappedBy = "board",cascade = CascadeType.ALL, orphanRemoval = true)
     Set<Connector> connectors;
 
     public Board() {
