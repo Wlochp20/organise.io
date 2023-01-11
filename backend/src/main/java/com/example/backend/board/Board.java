@@ -1,10 +1,9 @@
 package com.example.backend.board;
 
+import com.example.backend.table.TableClass;
 import com.example.backend.user.User;
-import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
-import java.lang.reflect.Type;
 import java.util.Set;
 
 @Entity
@@ -17,6 +16,8 @@ public class Board {
     private int userId;
     @ManyToMany
     Set<User> user;
+    @OneToMany
+    Set<TableClass> tableClasses;
 
 
     public Board() {
