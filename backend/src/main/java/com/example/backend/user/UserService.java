@@ -1,34 +1,39 @@
 package com.example.backend.user;
 
 
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.example.backend.registration.RegisterService;
+import com.example.backend.user.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserService implements UserDetailsService {
-    private  UserRepo userRepo;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+public class UserService implements RegisterService {
 
-    private final static String USER_NOT_FOUND = "user with email %s not found";
+    @Autowired
+    private UserRepo userRepo;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepo.findByUsername(username).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND ,username)));
-    }
-
-    public String signUp(User user){
+    public ResponseEntity register(User user) {
         boolean UserExist = userRepo.findByUsername(user.getUsername()).isPresent();
         if (UserExist){
-            throw new IllegalStateException(String.format("user %s already exist",user.getUsername()));
+            ResponseEntity.badRequest().body(String.format("user %s already exist",user.getUsername()));
+            return ResponseEntity.badRequest().body("this username already exist");
         }
-        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-
         userRepo.save(user);
-        return "you signed up";
+        return ResponseEntity.ok().body("User added");
+    }
+
+    @Override
+    public ResponseEntity login(User user) {
+        if (userRepo.findByUsername(user.getUsername()).isPresent()){
+            if(userRepo.findByUsername(user.getUsername()).get().getPassword().equals(user.getPassword())){
+                user.setLogged(true);
+                return ResponseEntity.ok().body("you ale logged in");
+            }
+            return ResponseEntity.badRequest().body("password incorrect");
+        }
+        return ResponseEntity.badRequest().body("username incorrect");
     }
 }
