@@ -1,19 +1,21 @@
 package com.example.backend.registration;
-
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.backend.user.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
 public class RegistrationController {
-    private RegistrationService registrationService;
+    @Autowired
+    private RegisterService registerService;
 
     @PostMapping(path = "/register")
-    public String register(@RequestBody RegistrationRequest request){
-        System.out.println("rest works");
-        return registrationService.register(request);
+    public ResponseEntity register(@RequestBody User user){
+        return registerService.register(user);
     }
 
+    @PostMapping(path = "/login")
+    public ResponseEntity login(@RequestBody User user){
+        return registerService.login(user);
+    }
 }
