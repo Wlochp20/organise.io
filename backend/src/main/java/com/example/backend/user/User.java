@@ -3,6 +3,7 @@ package com.example.backend.user;
 
 
 import com.example.backend.board.Board;
+import com.example.backend.connector.Connector;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -19,8 +20,10 @@ public class User  {
     private String email;
     private String password;
     private Boolean logged = false;
-    @ManyToMany
-    Set<Board> boards;
+
+    @OneToMany(mappedBy = "user")
+    Set<Connector> connectors;
+
 
     public User(String username, String email, String password) {
         this.username = username;
