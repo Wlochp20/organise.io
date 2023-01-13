@@ -1,0 +1,14 @@
+.home-wrapper{
+    height: 100vh;
+    width: 100%;
+    background: url('../../../assets/light-home.png') no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-title{
+        color: #3A4739;
+        font-family: 'Questrial', sans-serif;
+        font-size: 9em;
+    }
+}

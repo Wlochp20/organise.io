@@ -1,0 +1,15 @@
+.wrapper-logo{
+    width: 200px;
+    height: 50px;
+    background: #272727;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    &-title{
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-weight: thin;
+        margin: 0;
+    }
+}
