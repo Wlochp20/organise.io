@@ -40,6 +40,13 @@ public class User  {
     public User() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public Set<Connector> getConnectors() {
+        return connectors;
+    }
 
     public String getPassword() {
         return password;

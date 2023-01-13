@@ -5,15 +5,17 @@ import com.example.backend.board.Board;
 import com.example.backend.board.BoardRepo;
 import com.example.backend.connector.Connector;
 import com.example.backend.connector.ConnectorRepo;
-import com.example.backend.registration.RegisterService;
-import com.example.backend.user.UserRepo;
+import com.example.backend.rest.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Service
-public class UserService implements RegisterService {
+public class UserSystem implements RestService {
 
     @Autowired
     private UserRepo userRepo;
@@ -51,9 +53,24 @@ public class UserService implements RegisterService {
     @Override
     public ResponseEntity addBoard(Board board) {
         boardRepo.save(board);
-        System.out.println(userRepo.findByUsername(loginUser.getUsername()).get());
         Connector connector = new Connector(userRepo.findByUsername(loginUser.getUsername()).get(),board);
         connectorRepo.save(connector);
+        return ResponseEntity.ok().body("board have been added");
+    }
+
+    @Override
+    public List<Board> getAllBoards() {
+        List<Connector> connectors = connectorRepo.findAllByUser(userRepo.findByUsername(loginUser.getUsername()).get());
+        List<Board> boards = new ArrayList();
+        for(int i=0; i<connectors.size(); i++){
+            boards.add(connectors.get(i).getBoard());
+        }
+        return boards;
+    }
+
+    @Override
+    public ResponseEntity deletBoard(int id) {
+        boardRepo.delete(boardRepo.findById(id).get());
         return ResponseEntity.ok().build();
     }
 }
