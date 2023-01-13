@@ -1,13 +1,16 @@
-package com.example.backend.registration;
+package com.example.backend.rest;
 
 import com.example.backend.board.Board;
 import com.example.backend.user.User;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
-public interface RegisterService {
+public interface RestService {
     public ResponseEntity register(User user);
     public ResponseEntity login(User user);
     public ResponseEntity addBoard(Board board);
+    public List<Board> getAllBoards();
+    public ResponseEntity deletBoard(int id);
 }
