@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Entity
 public class Connector {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
@@ -29,10 +30,14 @@ public class Connector {
         this.board = board;
     }
 
-    public Connector(Board board) {
-        this.board = board;
+    public Connector() {
     }
 
-    public Connector() {
+    public User getUser() {
+        return user;
+    }
+
+    public Board getBoard() {
+        return board;
     }
 }
