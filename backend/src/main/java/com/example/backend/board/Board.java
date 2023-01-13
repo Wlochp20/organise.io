@@ -1,8 +1,7 @@
 package com.example.backend.board;
 
 import com.example.backend.connector.Connector;
-import com.example.backend.table.TableClass;
-import com.example.backend.user.User;
+import com.example.backend.task.Task;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,30 +13,24 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
+    private String[] users;
     @OneToMany
-    Set<TableClass> tableClasses;
+    Set<Task> tasks;
     @OneToMany(mappedBy = "board",cascade = CascadeType.ALL, orphanRemoval = true)
     Set<Connector> connectors;
+
+    public Board(String title) {
+        this.title = title;
+    }
 
     public Board() {
     }
 
-
-    public int getId() {
-        return id;
+    public void setUsers(String[] users) {
+        this.users = users;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Set<Task> getTasks() {
+        return tasks;
     }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-
 }
