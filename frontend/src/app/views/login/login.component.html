@@ -1,0 +1,24 @@
+<div class="wrapper-login">
+    <div class="wrapper-login-container">
+        <app-logo></app-logo>
+    </div>
+    <div class="wrapper-login-form">
+      <h2 class="wrapper-login-form-title">Login</h2>
+      <div class="form">
+        <mat-form-field appearance="fill">
+          <mat-label>name</mat-label>
+          <input matInput [formControl]="username" required>
+          <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>password</mat-label>
+          <input matInput [formControl]="password" required>
+          <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <button class="form-btn">let's go</button>
+        <p class="form-text">
+          Don't have an account, <span class="form-text-link" routerLink="/register">register now!</span>
+        </p>
+      </div>
+    </div>
+</div>

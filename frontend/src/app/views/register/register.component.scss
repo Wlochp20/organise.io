@@ -1,0 +1,79 @@
+.wrapper-register{
+    height: 100vh;
+    background: #DADADA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    &-container{
+        height: 100px;
+        width: calc(100% - 40px);
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        padding-left: 40px;
+    }
+    &-form{
+        height: 480px;
+        width: 490px;
+        background: #F9F9F9;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        border-radius: 16px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        &-title{
+            color: #3A4739;
+            font-size: 2.3em;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 100;
+        }
+        .form{
+            height: 450px;
+            width: 490px;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content:flex-end;
+            flex-direction: column;
+            &-btn{
+                height: 56px;
+                width: 300px;
+                background: #3A4739;
+                color: #fff;
+                font-family: 'Questrial', sans-serif;
+                font-size: 1.5em;
+                border-radius: 9px;
+                border: none;
+                cursor: pointer;
+            }
+            &-text{
+                font-family: 'Questrial', sans-serif;
+                font-size: 1.1em;
+                margin-top: 15px;
+                &-link{
+                    color: #3A4739;
+                    cursor: pointer;
+                    border-bottom: 1px solid #3A4739;
+                }
+            } 
+        }
+    }
+}
+::ng-deep{
+    .mat-mdc-form-field{
+        width: 300px;
+        margin: 5px;
+    }
+    .mdc-line-ripple::before{
+        display: none;
+    }
+    .mdc-text-field--filled:not(.mdc-text-field--disabled){
+        background: #DADADA;
+        border-style: none;
+        border-radius: 8px;
+    }
+}
