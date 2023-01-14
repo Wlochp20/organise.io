@@ -12,5 +12,5 @@ public interface RestService {
     public ResponseEntity login(User user);
     public ResponseEntity addBoard(Board board);
     public List<Board> getAllBoards();
-    public ResponseEntity deletBoard(int id);
+    public ResponseEntity deleteBoard(int id);
 }

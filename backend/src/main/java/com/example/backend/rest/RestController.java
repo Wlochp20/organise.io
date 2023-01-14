@@ -1,7 +1,5 @@
 package com.example.backend.rest;
 import com.example.backend.board.Board;
-import com.example.backend.board.BoardService;
-import com.example.backend.task.Task;
 import com.example.backend.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,9 +32,10 @@ public class RestController {
     public List<Board> showBoards(){
         return restService.getAllBoards();
     }
-    @PostMapping(path = "/deleteBoard")
+
+    @DeleteMapping(path = "/deleteBoard")
     public ResponseEntity deleteBoard(@RequestBody int id){
-        return restService.deletBoard(id);
+        return restService.deleteBoard(id);
     }
 
 
