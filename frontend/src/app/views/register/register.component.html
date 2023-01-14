@@ -17,10 +17,13 @@
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>password</mat-label>
-            <input matInput [formControl]="password" required>
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
             <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
-          <button class="form-btn">create account</button>
+          <button class="form-btn" (click)="createAccount()">create account</button>
           <p class="form-text">
             already have an account? <span class="form-text-link" routerLink="/login">Login</span>
           </p>

@@ -14,7 +14,8 @@ import {MatInputModule} from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import { RegisterComponent } from './views/register/register.component';
-
+import {MatIconModule} from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,9 @@ import { RegisterComponent } from './views/register/register.component';
     MatFormFieldModule,
     MatInputModule,
     MatSlideToggleModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

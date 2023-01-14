@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 export class LoginComponent {
   username = new FormControl('');
   password = new FormControl('');
+  hide : boolean = true;
   getErrorMessage() {
     return 'You must enter a value';
   }
