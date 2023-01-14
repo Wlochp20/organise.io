@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
+@CrossOrigin
 public class RestController {
     @Autowired
     private RestService restService;
