@@ -1,0 +1,29 @@
+<div class="wrapper-register">
+    <div class="wrapper-register-container">
+        <app-logo></app-logo>
+    </div>
+    <div class="wrapper-register-form">
+        <h2 class="wrapper-register-form-title">Register</h2>
+        <div class="form">
+          <mat-form-field appearance="fill">
+            <mat-label>name</mat-label>
+            <input matInput [formControl]="username" required>
+            <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>email</mat-label>
+            <input matInput [formControl]="email" required>
+            <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>password</mat-label>
+            <input matInput [formControl]="password" required>
+            <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <button class="form-btn">create account</button>
+          <p class="form-text">
+            already have an account? <span class="form-text-link" routerLink="/login">Login</span>
+          </p>
+        </div>
+      </div>
+</div>
