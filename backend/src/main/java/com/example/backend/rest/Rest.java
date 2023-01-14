@@ -4,15 +4,17 @@ import com.example.backend.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@org.springframework.web.bind.annotation.RestController
-@CrossOrigin
-public class RestController {
+@RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/")
+public class Rest {
+
     @Autowired
     private RestService restService;
-
 
     @PostMapping(path = "/register")
     public ResponseEntity register(@RequestBody User user){
