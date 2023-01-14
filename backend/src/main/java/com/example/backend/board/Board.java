@@ -14,7 +14,7 @@ public class Board {
     private int id;
     private String title;
     private String[] users;
-    @OneToMany
+    @OneToMany(mappedBy="board")
     Set<Task> tasks;
     @OneToMany(mappedBy = "board",cascade = CascadeType.ALL, orphanRemoval = true)
     Set<Connector> connectors;
@@ -28,6 +28,14 @@ public class Board {
 
     public void setUsers(String[] users) {
         this.users = users;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String[] getUsers() {
+        return users;
     }
 
     public Set<Task> getTasks() {

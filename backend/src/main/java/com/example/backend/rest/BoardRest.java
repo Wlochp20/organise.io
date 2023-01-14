@@ -38,8 +38,4 @@ public class BoardRest {
         return boardService.deleteAllTasks();
     }
 
-    @PostMapping(path = "/editTaskContent")
-    public ResponseEntity editTaskContent(@RequestBody Task task){
-        return boardService.editTaskContent(task);
-    }
 }

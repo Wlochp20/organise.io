@@ -10,6 +10,4 @@ public interface BoardService {
     public ResponseEntity deleteTask(int id);
     public List<Task> getAllTasks(int boardId);
     public ResponseEntity deleteAllTasks();
-    public ResponseEntity editTaskContent(Task task);
-
 }
