@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
-
+  @Input() textInGreenFrame : string = 'sing up';
+  ngOnChange() : void {
+    console.log('changed')
+  }
 }

@@ -17,6 +17,7 @@ import { RegisterComponent } from './views/register/register.component';
 import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { BoardsComponent } from './views/boards/boards.component';
+import { BoardComponent } from './shared/board/board.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { BoardsComponent } from './views/boards/boards.component';
     LogoComponent,
     LoginComponent,
     RegisterComponent,
-    BoardsComponent
+    BoardsComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,

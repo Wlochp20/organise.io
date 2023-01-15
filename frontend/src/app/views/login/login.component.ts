@@ -31,7 +31,9 @@ export class LoginComponent {
       })
       this.loginService.loginResListener().subscribe((res)=>{
         if(res.message == 'you are logged in'){
-          this.isUserLogged.setUser(true);
+          this.isUserLogged.isUserLogged =  true;
+          // @ts-ignore
+          this.isUserLogged.username = this.username.value;
           this.router.navigate(['/boards']);
         }
         else if(res.message == 'password incorrect'){

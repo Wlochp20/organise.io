@@ -5,11 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class IsUserLoggedService {
   constructor() { }
-  private user : boolean = false;
-  setUser( activtiy : boolean ) : void {
-    this.user = activtiy;
-  }
-  isUserLogged() : boolean {
-    return this.user;
-  }
+  isUserLogged : boolean = false;
+  username : string = '';
 }

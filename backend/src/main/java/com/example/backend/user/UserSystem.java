@@ -55,7 +55,7 @@ public class UserSystem implements RestService {
         boardRepo.save(board);
         Connector connector = new Connector(userRepo.findByUsername(loginUser.getUsername()).get(),board);
         connectorRepo.save(connector);
-        return ResponseEntity.ok().body("board have been added");
+        return ResponseEntity.ok().body("{\"message\":\"board has been added\"}");
     }
 
     @Override
@@ -63,7 +63,7 @@ public class UserSystem implements RestService {
         List<Connector> connectors = connectorRepo.findAllByUser(userRepo.findByUsername(loginUser.getUsername()).get());
         List<Board> boards = new ArrayList();
         for(int i=0; i<connectors.size(); i++){
-            boards.add(connectors.get(i).getBoard());
+            boards.add(connectors.get(i ).getBoard());
         }
         return boards;
     }
