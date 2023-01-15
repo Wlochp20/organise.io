@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { RegisterServiceService } from 'src/app/core/services/register-service/register-service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,7 +12,8 @@ export class RegisterComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('');
   hide : boolean = true;
-  constructor(private registerService : RegisterServiceService) {}
+  registerError : boolean = false;
+  constructor(private registerService : RegisterServiceService, private router : Router) {}
   getErrorMessage() {
     if (this.email.hasError('email')) {
       return 'Not a valid email';
@@ -21,11 +23,18 @@ export class RegisterComponent {
   createAccount() : void {
     if(this.username.value != null && this.email.value && this.password.value != null && !this.email.hasError('email')){
       this.registerService.register({
-        name : this.username.value,
-        email : this.email.value,
-        password : this.password.value
-      }).subscribe((data)=>{
-        console.log(data);
+        "username":this.username.value,
+        "password":this.password.value,
+        "email":this.email.value
+      });
+      this.registerService.registerResListener().subscribe((res)=>{
+        res = JSON.parse(`${res}`);
+        if(res.message == 'user added'){
+          this.router.navigate(['/login']);
+        }
+        else if(res.message == 'user already exist'){
+          this.registerError = true;
+        }
       })
     }
   }

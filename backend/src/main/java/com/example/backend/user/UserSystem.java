@@ -31,10 +31,10 @@ public class UserSystem implements RestService {
         boolean UserExist = userRepo.findByUsername(user.getUsername()).isPresent();
         if (UserExist){
             ResponseEntity.badRequest().body(String.format("user %s already exist",user.getUsername()));
-            return ResponseEntity.badRequest().body("this username already exist");
+            return ResponseEntity.badRequest().body("\"{\\\"message\\\":\\\"user already exist\\\"}\"");
         }
         userRepo.save(user);
-        return ResponseEntity.ok().body("User added");
+        return ResponseEntity.ok().body("\"{\\\"message\\\":\\\"user added\\\"}\"");
     }
 
     @Override
@@ -43,11 +43,11 @@ public class UserSystem implements RestService {
             if(userRepo.findByUsername(user.getUsername()).get().getPassword().equals(user.getPassword())){
                 user.setLogged(true);
                 loginUser = user;
-                return ResponseEntity.ok().body("you ale logged in");
+                return ResponseEntity.ok().body("{\"message\":\"you are logged in\"}");
             }
-            return ResponseEntity.badRequest().body("password incorrect");
+            return ResponseEntity.badRequest().body("{\"message\":\"password incorrect\"}");
         }
-        return ResponseEntity.badRequest().body("username incorrect");
+        return ResponseEntity.badRequest().body("{\"message\":\"username incorrect\"}");
     }
 
     @Override

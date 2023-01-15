@@ -24,6 +24,7 @@
             <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
           <button class="form-btn" (click)="createAccount()">create account</button>
+          <mat-error *ngIf="registerError">Account already exist!!!</mat-error>
           <p class="form-text">
             already have an account? <span class="form-text-link" routerLink="/login">Login</span>
           </p>
