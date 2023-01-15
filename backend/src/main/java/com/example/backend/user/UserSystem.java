@@ -31,10 +31,10 @@ public class UserSystem implements RestService {
         boolean UserExist = userRepo.findByUsername(user.getUsername()).isPresent();
         if (UserExist){
             ResponseEntity.badRequest().body(String.format("user %s already exist",user.getUsername()));
-            return ResponseEntity.badRequest().body("\"{\\\"message\\\":\\\"user already exist\\\"}\"");
+            return ResponseEntity.badRequest().body("{\"message\":\"user already exist\"}");
         }
         userRepo.save(user);
-        return ResponseEntity.ok().body("\"{\\\"message\\\":\\\"user added\\\"}\"");
+        return ResponseEntity.ok().body("{\"message\":\"user added\"}");
     }
 
     @Override

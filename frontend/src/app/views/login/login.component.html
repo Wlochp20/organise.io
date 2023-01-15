@@ -8,7 +8,8 @@
         <mat-form-field appearance="fill">
           <mat-label>name</mat-label>
           <input matInput [formControl]="username" required>
-          <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+          <!-- <mat-error *ngIf="username.invalid">Username is required</mat-error> -->
+          <mat-error *ngIf="isIncorrectUsername">Username is incorrect</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>password</mat-label>
@@ -17,7 +18,7 @@
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
-        <button class="form-btn">let's go</button>
+        <button (click)="login()" class="form-btn">let's go</button>
         <p class="form-text">
           Don't have an account, <span class="form-text-link" routerLink="/register">register now!</span>
         </p>

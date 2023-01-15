@@ -2,29 +2,29 @@ import { Injectable } from '@angular/core';
 import { RegisterInterface } from '../../interfaces/registerInterface';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Subject, catchError, throwError } from 'rxjs';
-import { LoginResInterface } from '../../interfaces/loginInterface';
+import { RegisterResInterface } from '../../interfaces/registerInterface';
+import { LoginInterface } from '../../interfaces/loginInterface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterServiceService {
+export class LoginServiceService {
 
   constructor(private http : HttpClient) { }
+  private loginResUpdate = new Subject<RegisterResInterface>();
 
-  private registerResUpdate = new Subject<LoginResInterface>();
-
-  register(data : RegisterInterface) : void {
+  login(data : LoginInterface) : void {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post<LoginResInterface>("http://localhost:8080/register",data,{ headers: headers })
+    this.http.post<RegisterResInterface>("http://localhost:8080/login",data,{ headers: headers })
     .pipe(catchError(this.errorHandler))
     .subscribe({
-      next: (data : LoginResInterface ) => this.registerResUpdate.next(data),
-      error: (error : HttpErrorResponse) => this.registerResUpdate.next(error.error),
+      next: (data : RegisterResInterface ) => this.loginResUpdate.next(data),
+      error: (error : HttpErrorResponse) => this.loginResUpdate.next(error.error),
       complete: () => console.info('complete') 
     })
   }
-  registerResListener() {
-    return this.registerResUpdate.asObservable();
+  loginResListener() {
+    return this.loginResUpdate.asObservable();
   }
   private errorHandler( error : HttpErrorResponse ){
     return throwError(()=>{ return error });
