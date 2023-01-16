@@ -38,7 +38,7 @@ public class BoardRest {
     }
 
     @PostMapping(path = "/setStage")
-    public ResponseEntity setStage(Task task){
+    public ResponseEntity setStage(@RequestBody Task task){
         return boardService.setStage(task);
     }
 

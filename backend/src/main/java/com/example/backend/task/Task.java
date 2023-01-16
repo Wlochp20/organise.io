@@ -12,7 +12,6 @@ public class Task {
     private String title;
     private String content;
     private int boardID;
-    private int taskId;
     private String stage;
     @ManyToOne
     @JoinColumn(name = "board_id", nullable = false)
@@ -24,13 +23,6 @@ public class Task {
         this.boardID = boardId;
     }
 
-    public int getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
-    }
 
     public String getStage() {
         return stage;
@@ -48,8 +40,8 @@ public class Task {
         this.boardID = boardID;
     }
 
-    public Task(int taskId, String stage) {
-        this.taskId = taskId;
+    public Task(int id, String stage) {
+        this.id = id;
         this.stage = stage;
     }
 

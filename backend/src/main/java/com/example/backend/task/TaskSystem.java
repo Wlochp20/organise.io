@@ -45,13 +45,14 @@ public class TaskSystem implements BoardService {
 
     @Override
     public ResponseEntity setStage(Task task) {
-          System.out.println(task.getTaskId());
+          System.out.println(task.getId());
+          System.out.println(task.getStage());
 //        System.out.println(taskRepo.findById(task.getId()).get().getId());
-//        Task newStageTaks= new Task();
-//        newStageTaks.setStage(task.getStage());
-//        System.out.println(newStageTaks);
-//        taskRepo.delete(taskRepo.findById(task.getId()).get());
-//        taskRepo.save(newStageTaks);
+        Task newStageTaks= new Task();
+        newStageTaks = taskRepo.findById(task.getId()).get();
+        newStageTaks.setStage(task.getStage());
+        System.out.println(newStageTaks);
+        taskRepo.save(newStageTaks);
         return ResponseEntity.ok().build();
     }
 
