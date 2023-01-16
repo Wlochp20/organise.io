@@ -10,4 +10,5 @@ public interface BoardService {
     public ResponseEntity deleteTask(int id);
     public List<Task> getAllTasks(int boardId);
     public ResponseEntity deleteAllTasks();
+    public ResponseEntity setStage(Task task);
 }

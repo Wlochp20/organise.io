@@ -12,8 +12,10 @@ public class Task {
     private String title;
     private String content;
     private int boardID;
+    private int taskId;
+    private String stage;
     @ManyToOne
-    @JoinColumn(name="board_id", nullable=false)
+    @JoinColumn(name = "board_id", nullable = false)
     private Board board;
 
     public Task(String title, String content, int boardId) {
@@ -22,11 +24,33 @@ public class Task {
         this.boardID = boardId;
     }
 
-    public Task(int id, String title, String content, int boardID) {
+    public int getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
+    }
+
+    public String getStage() {
+        return stage;
+    }
+
+    public void setStage(String stage) {
+        this.stage = stage;
+    }
+
+    public Task(int id, String title, String stage, String content, int boardID) {
         this.id = id;
         this.title = title;
         this.content = content;
+        this.stage = stage;
         this.boardID = boardID;
+    }
+
+    public Task(int taskId, String stage) {
+        this.taskId = taskId;
+        this.stage = stage;
     }
 
     public Task() {

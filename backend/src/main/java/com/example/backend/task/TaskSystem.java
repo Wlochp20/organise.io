@@ -43,5 +43,17 @@ public class TaskSystem implements BoardService {
         return ResponseEntity.ok().body("all tasks deleted");
     }
 
+    @Override
+    public ResponseEntity setStage(Task task) {
+          System.out.println(task.getTaskId());
+//        System.out.println(taskRepo.findById(task.getId()).get().getId());
+//        Task newStageTaks= new Task();
+//        newStageTaks.setStage(task.getStage());
+//        System.out.println(newStageTaks);
+//        taskRepo.delete(taskRepo.findById(task.getId()).get());
+//        taskRepo.save(newStageTaks);
+        return ResponseEntity.ok().build();
+    }
+
 
 }

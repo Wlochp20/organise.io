@@ -37,4 +37,9 @@ public class BoardRest {
         return boardService.deleteAllTasks();
     }
 
+    @PostMapping(path = "/setStage")
+    public ResponseEntity setStage(Task task){
+        return boardService.setStage(task);
+    }
+
 }

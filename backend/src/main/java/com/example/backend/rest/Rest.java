@@ -36,7 +36,7 @@ public class Rest {
         return restService.getAllBoards();
     }
 
-    @DeleteMapping(path = "/deleteBoard")
+    @PostMapping(path = "/deleteBoard")
     public ResponseEntity deleteBoard(@RequestBody int id){
         return restService.deleteBoard(id);
     }

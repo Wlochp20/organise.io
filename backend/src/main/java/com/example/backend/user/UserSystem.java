@@ -70,6 +70,7 @@ public class UserSystem implements RestService {
 
     @Override
     public ResponseEntity deleteBoard(int id) {
+        System.out.println();
         boardRepo.delete(boardRepo.findById(id).get());
         return ResponseEntity.ok().build();
     }
