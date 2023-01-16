@@ -34,6 +34,10 @@ public class Board {
         return title;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String[] getUsers() {
         return users;
     }

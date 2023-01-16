@@ -27,7 +27,7 @@ public class BoardRest {
         return boardService.deleteTask(id);
     }
 
-    @GetMapping(path = "/getAllTasks")
+    @PostMapping(path = "/getAllTasks")
     public List<Task> getAllTasks(@RequestBody int boardId){
         return boardService.getAllTasks(boardId);
     }

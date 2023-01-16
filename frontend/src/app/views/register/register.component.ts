@@ -28,7 +28,6 @@ export class RegisterComponent {
         "email":this.email.value
       });
       this.registerService.registerResListener().subscribe((res)=>{
-        res = JSON.parse(`${res}`);
         if(res.message == 'user added'){
           this.router.navigate(['/login']);
         }

@@ -1,0 +1,20 @@
+.wrapper-dialog{
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 90%;
+    }
+}
+.mat-mdc-dialog-actions{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}

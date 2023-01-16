@@ -1,9 +1,14 @@
 <div class="wrapper-boards">
     <app-navigation  [textInGreenFrame]="username"></app-navigation>
     <article class="boards">
-        <app-board></app-board>
+        <app-board *ngFor="let item of boards;" [name]="item.title" [id]="item.id"></app-board>
     </article>
     <div class="wrapper-boards-add">
-        <button></button>
+        <button class="wrapper-boards-add-btn" (click)="addNewBoard()">
+            <span class="material-symbols-outlined">
+                add
+            </span>
+            <p>add new board</p>
+        </button>
     </div>
 </div>

@@ -63,7 +63,7 @@ public class UserSystem implements RestService {
         List<Connector> connectors = connectorRepo.findAllByUser(userRepo.findByUsername(loginUser.getUsername()).get());
         List<Board> boards = new ArrayList();
         for(int i=0; i<connectors.size(); i++){
-            boards.add(connectors.get(i ).getBoard());
+            boards.add(connectors.get(i).getBoard());
         }
         return boards;
     }
@@ -72,6 +72,7 @@ public class UserSystem implements RestService {
     public ResponseEntity deleteBoard(int id) {
         System.out.println();
         boardRepo.delete(boardRepo.findById(id).get());
+        System.out.println(boardRepo.findById(id));
         return ResponseEntity.ok().build();
     }
 }

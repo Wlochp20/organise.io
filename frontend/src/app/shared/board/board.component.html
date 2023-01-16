@@ -1,10 +1,10 @@
-<div class="wrapper-board">
+<div class="wrapper-board" (click)="openDashboard()">
     <div class="wrapper-board-icon">
-        <span class="material-symbols-outlined">
+        <span (click)="deleteBoard()" class="material-symbols-outlined">
             close
         </span>
     </div>
     <div class="wrapper-board-container">
-        <h3 class="wrapper-board-text">Board</h3>
+        <h3 class="wrapper-board-text">{{name}}</h3>
     </div>
 </div>

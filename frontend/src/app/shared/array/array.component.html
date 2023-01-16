@@ -1,0 +1,14 @@
+<div class="wrapper-array">
+    <header class="wrapper-array-title">
+        <h2 class="wrapper-array-title-text">{{title}}</h2>
+    </header>
+    <div class="wrapper-array-container" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="tasks">
+        <app-task (cdkDragDropped)="elementDrag(item.id)" cdkDrag *ngFor="let item of tasks" [title]="item.title" [content]="item.content"></app-task>
+        <div (click)="addTask()" class="wrapper-array-container-add">
+            <span class="material-symbols-outlined">
+                add
+            </span>
+            <p>add task</p>
+        </div>
+    </div>
+</div>

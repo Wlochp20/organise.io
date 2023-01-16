@@ -1,0 +1,1 @@
+export type stage = 'to do' | 'in progress' | 'done';

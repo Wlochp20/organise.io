@@ -3,6 +3,8 @@
     width: 300px;
     background: #222222;
     border-radius: 14px;
+    margin: 20px;
+    cursor: pointer;
     &-icon{
         width: 300px;
         position: absolute;
@@ -20,6 +22,7 @@
     &-text{
         color: #fff;
         font-size: 30px;
+        margin: 0;
     }
 }
 .material-symbols-outlined{

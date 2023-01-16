@@ -12,6 +12,7 @@ export class BoardServiceService {
 
   private getAllBoardsResUpdate = new Subject<LoginResInterface>();
   private addBoardResUpdate = new Subject<any>();
+  private deleteBoardResUpdate = new Subject<any>();
 
   getAllBoards() : void {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -24,17 +25,20 @@ export class BoardServiceService {
     })
   }
   addBoard(name : string) : void {
-    let headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
-    const data = { 
-      id: 1,
-      title:'',
-      users: []
-    };
-    this.http.post("http://localhost:8080/addBoard",{ title : "dupa"})
+    this.http.post("http://localhost:8080/addBoard",{ title : name})
     .pipe(catchError(this.errorHandler))
     .subscribe({
       next: (data : any ) => this.addBoardResUpdate.next(data),
       error: (error : HttpErrorResponse) => this.addBoardResUpdate.next(error.error),
+      complete: () => console.info('complete') 
+    })
+  }
+  deleteBoard(id : number) : void {;
+    this.http.post(`http://localhost:8080/deleteBoard`, id)
+    .pipe(catchError(this.errorHandler))
+    .subscribe({
+      next: (data : any ) => this.deleteBoardResUpdate.next(data),
+      error: (error : HttpErrorResponse) => this.deleteBoardResUpdate.next(error.error),
       complete: () => console.info('complete') 
     })
   }
@@ -43,6 +47,9 @@ export class BoardServiceService {
   }
   addBoardResListener() {
     return this.addBoardResUpdate.asObservable();
+  }
+  deleteBoardResListener() {
+    return this.deleteBoardResUpdate.asObservable();
   }
   private errorHandler( error : HttpErrorResponse ){
     return throwError(()=>{ return error });

@@ -18,6 +18,12 @@ import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { BoardsComponent } from './views/boards/boards.component';
 import { BoardComponent } from './shared/board/board.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './shared/dialog/dialog.component';
+import { ArrayComponent } from './shared/array/array.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { TaskComponent } from './shared/task/task.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +33,11 @@ import { BoardComponent } from './shared/board/board.component';
     LoginComponent,
     RegisterComponent,
     BoardsComponent,
-    BoardComponent
+    BoardComponent,
+    DashboardComponent,
+    DialogComponent,
+    ArrayComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +51,8 @@ import { BoardComponent } from './shared/board/board.component';
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
+    MatDialogModule,
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

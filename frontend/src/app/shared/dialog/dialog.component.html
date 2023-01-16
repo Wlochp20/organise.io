@@ -1,0 +1,13 @@
+<div class="wrapper-dialog">
+    <form class="wrapper-dialog-container">
+        <mat-form-field appearance="fill">
+            <mat-label>title</mat-label>
+            <input matInput [formControl]="data" required>
+            <mat-error>Title is inncorect</mat-error>
+          </mat-form-field>
+        <div mat-dialog-actions>
+            <button mat-button mat-dialog-close>No</button>
+            <button (click)="closeDialog()" mat-button cdkFocusInitial>Ok</button>
+        </div>
+    </form>
+</div>
