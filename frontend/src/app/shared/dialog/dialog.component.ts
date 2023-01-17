@@ -31,10 +31,14 @@ export class DialogComponent {
     }
     if(this.data.value != null && this.data.value != '' && this.dialogService.dashboard){
       this.taskService.addTask(this.data.value, 'opis', this.dialogService.boardId, 'to do');
-      this.router.navigateByUrl(`/home`, { skipLocationChange: true }).then(() => {
-        this.router.navigate([`/dashboard/${this.dialogService.boardId}`]);
-      });
-      this.dialogRef.close();
+      this.taskService.addTaskListener().subscribe((res)=>{
+        this.taskService.getAllTasks(this.dialogService.boardId);
+        this.taskService.getAllTasksListener().subscribe((res)=>{
+          console.log(res)
+          this.dialogService.tasks = res;
+          this.dialogRef.close();
+        })
+      })
     }
     else{
       this.isDataOk = false;

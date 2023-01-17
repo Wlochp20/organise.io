@@ -1,6 +1,6 @@
 <div class="wrapper-dashboard">
     <app-navigation  [textInGreenFrame]="username"></app-navigation>
     <article class="boards" cdkDropListGroup    >
-        <app-array *ngFor="let item of arrays" [title]="item"></app-array>
+        <app-array *ngFor="let item of arrays" [title]="item" [tasks]="tasks"></app-array>
     </article>
 </div>

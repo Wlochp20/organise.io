@@ -8,4 +8,5 @@ export class DialogServiceService {
   constructor() { }
   dashboard : boolean = false;
   boardId : number = 0;
+  tasks : any[] = []
 }

@@ -10,10 +10,11 @@ import { Router } from '@angular/router';
 export class BoardComponent{
 
   constructor(private boardService : BoardServiceService, private router : Router) {}
+  
   @Input() name : string = 'board'
   @Input() id : number = 0;
+
   deleteBoard() : void {
-    console.log(this.id)
     this.boardService.deleteBoard(this.id);
   }
   openDashboard() : void {

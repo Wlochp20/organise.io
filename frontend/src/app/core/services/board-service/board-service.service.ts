@@ -34,7 +34,7 @@ export class BoardServiceService {
     })
   }
   deleteBoard(id : number) : void {;
-    this.http.post(`http://localhost:8080/deleteBoard`, id)
+    this.http.post(`http://localhost:8080/deleteBoard`,id)
     .pipe(catchError(this.errorHandler))
     .subscribe({
       next: (data : any ) => this.deleteBoardResUpdate.next(data),

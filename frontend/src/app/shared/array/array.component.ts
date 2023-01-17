@@ -20,26 +20,21 @@ export class ArrayComponent implements OnInit{
     private route : ActivatedRoute, 
     private router : Router,
     private dialog : Dialog,
-    private dialogService : DialogServiceService
+    private dialogService : DialogServiceService,
   ) {}
 
-  tasks : any[] = []
   boardId : number = 0; 
   currentDraggedTaskId : number = 0;
   @Input() title : stage = 'to do';
+  @Input() tasks : any[] = [];
 
   ngOnInit(): void {
     this.route.params.subscribe((params : any) => {
       this.boardId = parseInt(params.id);
     })
-    this.taskService.getAllTasksListener().subscribe((res)=>{
-      res.forEach((element : any) => {
-        if(element.stage == this.title){
-          this.tasks.push(element)
-        }
-      });
-      console.log(res)
-    })
+  }
+  ngOnChange() : void {
+    console.log('dupa')
   }
   elementDrag(id : number) : void {
     this.currentDraggedTaskId = id;
@@ -68,11 +63,12 @@ export class ArrayComponent implements OnInit{
     }
   }
   addTask() : void {
-    
     this.dialogService.dashboard = true;
     this.dialogService.boardId = this.boardId;
     this.dialog.open(DialogComponent, { panelClass:'coustomDialog', disableClose: true});
-    this.taskService.getAllTasks(this.boardId);
+    this.dialog.afterAllClosed.subscribe((res)=>{
+      this.tasks = this.dialogService.tasks
+    })
   }
 
 }
