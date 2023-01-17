@@ -1,5 +1,5 @@
 <div class="wrapper-boards">
-    <app-navigation  [textInGreenFrame]="username"></app-navigation>
+    <app-navigation  [textInGreenFrame]="username" [textInLoginFrame]="'log out'"></app-navigation>
     <article class="boards">
         <app-board *ngFor="let item of boards;" [name]="item.title" [id]="item.id"></app-board>
     </article>

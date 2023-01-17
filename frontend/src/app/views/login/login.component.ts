@@ -19,7 +19,6 @@ export class LoginComponent {
   username = new FormControl('');
   password = new FormControl('');
   hide : boolean = true;
-  isIncorrectUsername : boolean = true;
   getErrorMessage() {
     return 'You must enter a value';
   }
@@ -37,11 +36,10 @@ export class LoginComponent {
           this.router.navigate(['/boards']);
         }
         else if(res.message == 'password incorrect'){
-          console.log('password')
+          this.password.setValue(null);
         }
         else if(res.message == 'username incorrect'){
-          this.isIncorrectUsername = true;
-          console.log('inncorect')
+          this.username.setValue(null);
         }
       })
     }

@@ -1,5 +1,5 @@
 <div class="wrapper-dashboard">
-    <app-navigation  [textInGreenFrame]="username"></app-navigation>
+    <app-navigation  [textInGreenFrame]="username" [textInLoginFrame]="'log out'"></app-navigation>
     <article class="boards" cdkDropListGroup    >
         <app-array *ngFor="let item of arrays" [title]="item" [tmpTasks]="tasks"></app-array>
     </article>

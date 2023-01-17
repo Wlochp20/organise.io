@@ -3,9 +3,9 @@
         <app-logo></app-logo>
     </div>
     <ul class="wrapper-navigation-list">
-        <li class="wrapper-navigation-list-element">home</li>
+        <li class="wrapper-navigation-list-element" routerLink="/home">home</li>
         <li class="wrapper-navigation-list-element">about</li>
-        <li class="wrapper-navigation-list-element" routerLink="/login">login</li>
-        <li class="wrapper-navigation-list-element">{{textInGreenFrame || 'undefined'}}</li>
+        <li class="wrapper-navigation-list-element" routerLink="/login">{{textInLoginFrame}}</li>
+        <li (click)="navigate()" class="wrapper-navigation-list-element">{{textInGreenFrame || 'undefined'}}</li>
     </ul>
 </nav>
