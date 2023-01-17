@@ -43,8 +43,42 @@ export class ArrayComponent implements OnInit{
       subscription.unsubscribe()
     })
   }
-  elementDrag(id : number) : void {
+  elementDrag(event : any,id : number) : void {
     this.currentDraggedTaskId = id;
+    if(event.previousContainer.id != event.container.id && this.currentDraggedTaskId != 0){
+      const previousContainer = parseInt(event.previousContainer.id[event.previousContainer.id.length - 1]);
+      const currentContainer = parseInt(event.container.id[event.container.id.length - 1]);
+      if(currentContainer - previousContainer == 1){
+        if(this.title == 'to do'){
+          console.log(1)
+          this.taskService.setTaskStage(this.currentDraggedTaskId, 'in progress');
+        }
+        if(this.title == 'in progress'){
+          console.log(2)
+          this.taskService.setTaskStage(this.currentDraggedTaskId, 'done');
+        }
+      }
+      if(currentContainer - previousContainer == -1){
+        if(this.title == 'done'){
+          console.log(3)
+          this.taskService.setTaskStage(this.currentDraggedTaskId, 'in progress');
+        }
+        if(this.title == 'in progress'){
+          console.log(4)
+          this.taskService.setTaskStage(this.currentDraggedTaskId, 'to do');
+        }
+      }
+      if(currentContainer - previousContainer == 2 || currentContainer - previousContainer == -2){
+        if(this.title == 'to do'){
+          console.log(5)
+          this.taskService.setTaskStage(this.currentDraggedTaskId, 'done');
+        }
+        if(this.title == 'done'){
+          console.log(6)
+          this.taskService.setTaskStage(this.currentDraggedTaskId, 'to do');
+        }
+      }
+    }
   }
   drop(event: CdkDragDrop<string[]>) : void {
     if (event.previousContainer === event.container) {
@@ -56,17 +90,6 @@ export class ArrayComponent implements OnInit{
         event.previousIndex,
         event.currentIndex,
       );
-    }
-    if(event.previousContainer.id != event.container.id && this.currentDraggedTaskId != 0){
-      if(event.container.id == "cdk-drop-list-0" || event.container.id == "cdk-drop-list-3"){
-        this.taskService.setTaskStage(this.currentDraggedTaskId,'to do');
-      }
-      else if(event.container.id == "cdk-drop-list-1" || event.container.id == "cdk-drop-list-4"){
-        this.taskService.setTaskStage(this.currentDraggedTaskId, 'in progress');
-      }
-      else if(event.container.id == "cdk-drop-list-2" || event.container.id == "cdk-drop-list-5"){
-        this.taskService.setTaskStage(this.currentDraggedTaskId, 'done');
-      }
     }
   }
   addTask() : void {
