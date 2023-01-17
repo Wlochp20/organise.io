@@ -30,7 +30,7 @@ export class DialogComponent {
       this.dialogRef.close();
     }
     if(this.data.value != null && this.data.value != '' && this.dialogService.dashboard){
-      this.taskService.addTask(this.data.value, 'opis', this.dialogService.boardId, 'to do');
+      this.taskService.addTask(this.data.value, 'opis', this.dialogService.boardId, this.dialogService.stage);
       this.taskService.addTaskListener().subscribe((res)=>{
         this.taskService.getAllTasks(this.dialogService.boardId);
         this.taskService.getAllTasksListener().subscribe((res)=>{

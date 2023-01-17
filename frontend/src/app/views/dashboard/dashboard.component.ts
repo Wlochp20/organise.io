@@ -31,9 +31,5 @@ export class DashboardComponent implements OnInit{
       this.boardId = parseInt(params.id);
     })
     this.taskService.getAllTasks(this.boardId);
-    const subscription = this.taskService.getAllTasksListener().subscribe((res)=>{
-      this.tasks = res;
-      subscription.unsubscribe()
-    })
   }
 }
